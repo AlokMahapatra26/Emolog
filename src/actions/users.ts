@@ -2,6 +2,8 @@
 
 import { createClient } from "@/auth/server"
 import { handleError } from "@/lib/utils"
+import { db } from "@/db/index"
+import { users } from "@/db/schema"
 
 export const loginAction = async (email : string, password : string) => {
     try{
@@ -59,7 +61,11 @@ export const signupAction = async (displayName : string, email : string , passwo
 
         if(!userId) throw new Error("Error signing up");
 
-        //add user to database
+        await db.insert(users).values({
+            id : userId,
+            name : displayName ,
+            email : email
+        })
 
         return {errorMessage : null}
 
