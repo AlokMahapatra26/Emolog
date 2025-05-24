@@ -3,6 +3,7 @@ import { handleError } from "@/lib/utils"
 import { db } from "@/db/index"
 import { getUser } from "@/auth/server"
 import { moodEntries } from "@/db/schema"
+import { eq } from "drizzle-orm"
 
 export const addJournalAction = async (thoughts : string, mood : string, day : string) => {
     try {
@@ -21,3 +22,26 @@ export const addJournalAction = async (thoughts : string, mood : string, day : s
     return handleError(error);
   }
 }
+
+export const getAllJournalAction = async () => {
+    try {
+    const user = await getUser();
+    if (!user) throw new Error("You must be logged in to add journal");
+
+    const journal = await db   
+        .select()
+        .from(moodEntries)
+        .where(eq(moodEntries.userId , user.id))
+        .orderBy(moodEntries.createdAt)
+
+       
+
+    return { journal , errorMessage : null };
+  } catch (error) {
+    return {
+      journal: null,
+      errorMessage: handleError(error).errorMessage
+    };
+  }
+}
+

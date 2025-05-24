@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Pencil } from 'lucide-react'
+import AllJournals from '@/components/AllJournals'
 
 const Dashboard = () => {
   return (
@@ -10,6 +11,7 @@ const Dashboard = () => {
             <Link href="/journal">
             <Button className='cursor-pointer'>Write<Pencil/></Button>
             </Link>
+            <AllJournals/>
         
         
     </div>

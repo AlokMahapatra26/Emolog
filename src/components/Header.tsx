@@ -11,7 +11,7 @@ async function Header() {
 
   const user = await getUser();
   
-  console.log(user)
+  
   
 
   return (
