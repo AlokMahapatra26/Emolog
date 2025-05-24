@@ -11,7 +11,7 @@ async function Header() {
 
   const user = await getUser();
   
-
+  console.log(user)
   
 
   return (
@@ -22,7 +22,7 @@ async function Header() {
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-4">
+        <nav className=" md:flex items-center gap-4">
           {user ? (
             ""
           ) : (
@@ -38,7 +38,7 @@ async function Header() {
           <ModeToggle />
           {
             user ? <Link href="/user">
-          <Button variant="outline">
+          <Button variant="outline" className="ml-2">
             
             <User2/>
           </Button>

@@ -14,6 +14,7 @@ export const moodEntries = pgTable('mood_entries', {
   userId: uuid('user_id').references(() => users.id),
   entryText: text('entry_text'),
   moodLabel: text('mood_label'),
+  dayLabel : text('day_label'),
   createdAt: timestamp('created_at').defaultNow()
 });
 
