@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { format } from "date-fns"
 import { CalendarDays, Smile, Text } from "lucide-react"
 import Markdown from "react-markdown"
+import Link from "next/link"
 
 const moodColorMap: Record<string, string> = {
   happy: "bg-yellow-100 text-yellow-800",
@@ -44,7 +45,8 @@ const AllJournals = async () => {
       const formattedDate = format(date, "dd MMM");
 
       return (
-        <Card
+         <Link href={`/journal/${journal.id}`} key={journal.id}>
+            <Card
           key={journal.id}
           className="h-48 w-full border border-indigo-200 hover:shadow-md transition-shadow duration-200 rounded-xl flex flex-col justify-between"
         >
@@ -69,6 +71,8 @@ const AllJournals = async () => {
             </div>
           </CardContent>
         </Card>
+         </Link>
+        
       );
     })}
   </div>

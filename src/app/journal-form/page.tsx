@@ -16,7 +16,7 @@ import {
 import DateAndTime from '@/components/DateAndTime';
 import { addJournalAction } from '@/actions/journal';
 
-export default function Journal() {
+export default function JournalForm() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 

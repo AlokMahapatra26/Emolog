@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div className='text-center mt-8'>
         
-            <Link href="/journal">
+            <Link href="/journal-form">
             <Button className='cursor-pointer'>Write<Pencil/></Button>
             </Link>
             <AllJournals/>

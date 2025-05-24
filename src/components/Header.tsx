@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import "@/styles/globals.css";
 import { ModeToggle } from "@/components/DarkModeToggle";
-import LogoutButton from "@/components/LogoutButton";
 import { getUser } from "@/auth/server";
 import { User2 } from "lucide-react";
 
