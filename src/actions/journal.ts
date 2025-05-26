@@ -76,3 +76,29 @@ export const getJournalAction = async (id : string) => {
 }
 
 
+
+export const deleteJournalAction = async (id : string) => {
+    try {
+    const user = await getUser();
+    if (!user) throw new Error("You must be logged in to add journal");
+
+    const deleted = await db
+      .delete(moodEntries)
+      .where(
+        and(
+          eq(moodEntries.userId, user.id),
+          eq(moodEntries.id, id)
+        )
+      );
+       
+    return {
+      
+      errorMessage: null
+    };
+  } catch (error) {
+    return {
+      
+      errorMessage: handleError(error).errorMessage
+    };
+  }
+}
