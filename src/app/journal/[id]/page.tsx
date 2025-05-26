@@ -1,9 +1,8 @@
-
 import React from 'react'
 import { getJournalAction } from '@/actions/journal'
 import { toast } from 'sonner'
-import {  Smile, CalendarDays, NotebookPen } from "lucide-react";
-
+import {  Smile, CalendarDays, NotebookPen  } from "lucide-react";
+import Delete from '@/components/Delete';
 
 interface JournalProps {
   params: {
@@ -54,6 +53,10 @@ const Journal = async ({ params }: JournalProps) => {
       </p>
       
       
+    </div>
+
+    <div>
+      {journal?.id && <Delete journalId={journal.id} />}
     </div>
   </div>
 )
