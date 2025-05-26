@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import "@/styles/globals.css";
 import { ModeToggle } from "@/components/DarkModeToggle";
 import { getUser } from "@/auth/server";
-import { User2 } from "lucide-react";
+import { User2 , ChartArea, Brain , Home} from "lucide-react";
 
 async function Header() {
 
@@ -22,8 +22,26 @@ async function Header() {
 
         {/* Desktop Menu */}
         <nav className=" md:flex items-center gap-4">
+          
           {user ? (
-            ""
+            <>
+          <Button variant="outline" className="ml-2" asChild>
+            <Link href="/"><Home/></Link>
+          </Button>
+          <Button variant="outline" className="ml-2" asChild>
+            <Link href="/user"><User2/></Link>
+          </Button>
+          <Button variant="outline" className="ml-2" asChild>
+            <Link href="/aitherapist"><Brain/></Link>
+          </Button>
+          <Button variant="outline" className="ml-2" asChild>
+            <Link href="/chart"><ChartArea/></Link>
+          </Button>
+
+          <ModeToggle />
+
+          
+            </>
           ) : (
             <>
               <Button asChild>
@@ -34,15 +52,8 @@ async function Header() {
               </Button>
             </>
           )}
-          <ModeToggle />
-          {
-            user ? <Link href="/user">
-          <Button variant="outline" className="ml-2">
-            
-            <User2/>
-          </Button>
-          </Link> : ""
-          }
+          
+          
           
           
         </nav>

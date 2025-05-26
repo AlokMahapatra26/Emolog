@@ -102,3 +102,33 @@ export const deleteJournalAction = async (id : string) => {
     };
   }
 }
+
+
+export const getAllMoodAndDayLabelAction = async (id : string) => {
+    try {
+    const user = await getUser();
+    if (!user) throw new Error("You must be logged in to add journal");
+
+    const moodAndDay = await db
+  .select({
+    moodLabel: moodEntries.moodLabel,
+    dayLabel: moodEntries.dayLabel,
+    createdAt : moodEntries.createdAt
+  })
+  .from(moodEntries)
+  .where(eq(moodEntries.userId, user.id));
+
+
+       
+
+    return {
+      data: moodAndDay || null,
+      errorMessage: null
+    }
+  } catch (error) {
+    return {
+      data: null,
+      errorMessage: handleError(error).errorMessage
+    };
+  }
+}
