@@ -18,7 +18,7 @@ const Greet = async () => {
     <div className="text-3xl font-semibold tracking-tight text-gray-800 dark:text-gray-100">
       {user ? (
         <>
-          <span className="text-indigo-600 dark:text-indigo-400">{greeting},</span>{' '}
+          <span >{greeting},</span>{' '}
           <span className="underline decoration-indigo-500/50">{user.user_metadata.displayName}</span>
           <span className="ml-1">👋</span>
         </>

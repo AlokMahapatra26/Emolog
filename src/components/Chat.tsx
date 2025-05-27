@@ -101,9 +101,9 @@ type Props = {
         ref={contentRef}
       >
         <DialogHeader>
-          <DialogTitle>Ask AI About Your Notes</DialogTitle>
-          <DialogDescription>
-            Out AI can answer questions about all of your notes
+          <DialogTitle>Tara</DialogTitle>
+          <DialogDescription className="bg-gray-100 p-2 rounded opacity-50">
+            Tara know everything you have wrote in your journals and she will help you to navigate and understand your emotions
           </DialogDescription>
         </DialogHeader>
 
@@ -130,7 +130,7 @@ type Props = {
         >
           <Textarea
             ref={textareaRef}
-            placeholder="Ask me anything about your notes..."
+            placeholder="Type here..."
             className="placeholder:text-muted-foreground resize-none rounded-none border-none bg-transparent p-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
             style={{
               minHeight: "0",
