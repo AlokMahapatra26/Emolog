@@ -27,7 +27,7 @@ export default function DateAndTime() {
   });
 
   return (
-    <Card className="max-w-sm mx-auto p-4 shadow-lg rounded-2xl mb-4">
+    <Card className="max-w-sm mx-auto p-4 border rounded-2xl mb-4">
       <CardContent className="text-center space-y-2">
         
         <p className="text-lg text-primary">{formattedDate}</p>

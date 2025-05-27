@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t py-6 mt-10 bg-white dark:bg-zinc-900 text-center text-sm bg-popover">
+    <footer className="w-full border-t py-6 mt-10 bg text-center text-sm bg-popover">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="flex items-center gap-1">
           Made with <Heart className="h-4 w-4 text-rose-500" fill="currentColor" /> for your mind by{" "}
@@ -14,7 +14,7 @@ const Footer = () => {
 
         <div className="flex gap-4">
           <Link
-            href="https://github.com/yourusername/mindmitra"
+            href="https://github.com/AlokMahapatra26/Emolog/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-zinc-900 dark:hover:text-white transition"
@@ -23,7 +23,7 @@ const Footer = () => {
           </Link>
 
           <Link
-            href="mailto:mindmitra@support.com"
+            href="mailto:alokmahapatra2604@gmail.com"
             className="hover:text-zinc-900 dark:hover:text-white transition"
           >
             <Mail className="h-5 w-5" />

@@ -27,17 +27,13 @@ export default function JournalForm() {
       const day = formData.get('day') as string;
 
       
-      let errorMessage;
-      let title;
-      let description;
+      
 
-      // You can call your DB action here
-      // const response = await addJournalEntry(thoughts, mood, day);
-      const isSuccess = true; // fake response for now
+     
 
-      errorMessage = (await addJournalAction(thoughts, mood, day)).errorMessage;
-      title = "Journal added successfully";
-      description = "We have successfully add your todays journal in our secure database , now our AI will help you to navigate through your emotion"
+      const errorMessage = (await addJournalAction(thoughts, mood, day)).errorMessage;
+      const title = "Journal added successfully";
+      const description = "We have successfully add your todays journal in our secure database , now our AI will help you to navigate through your emotion"
 
       if(!errorMessage){
                 toast.success(title , {description : description})

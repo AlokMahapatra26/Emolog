@@ -11,6 +11,7 @@ const Dashboard = () => {
             <Link href="/journal-form">
             <Button className='cursor-pointer'>Write<Pencil/></Button>
             </Link>
+            <hr className='mt-4'/>
             <AllJournals/>
         
         

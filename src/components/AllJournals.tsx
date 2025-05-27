@@ -40,7 +40,7 @@ const AllJournals = async () => {
   return (
    
     <div className="max-w-3xl mx-auto p-4">
-  <h1 className="text-2xl font-semibold mb-4 ">Your Journal Entries</h1>
+  <h1 className="text-2xl font-semibold mb-4 ">Your Recent Journal Entries</h1>
 
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
   {[...(journal ?? [])].reverse().map((journal: any) => {
@@ -51,7 +51,7 @@ const AllJournals = async () => {
 
     return (
       <Link href={`/journal/${journal.id}`} key={journal.id}>
-        <Card className="h-48 w-full border border-indigo-200 hover:shadow-md transition-shadow duration-200 rounded-xl flex flex-col justify-between">
+        <Card className="h-48 w-full border  hover:shadow-md transition-shadow duration-200 rounded-xl flex flex-col justify-between">
           <CardContent className="p-4 space-y-2">
             <div className="flex items-center justify-between">
               <Badge className={`text-xs ${moodColor}`}>

@@ -102,7 +102,7 @@ type Props = {
       >
         <DialogHeader>
           <DialogTitle>Tara</DialogTitle>
-          <DialogDescription className="bg-gray-100 p-2 rounded opacity-50">
+          <DialogDescription className=" text-xs border p-2 rounded opacity-50">
             Tara know everything you have wrote in your journals and she will help you to navigate and understand your emotions
           </DialogDescription>
         </DialogHeader>

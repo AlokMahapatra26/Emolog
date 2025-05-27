@@ -84,7 +84,7 @@ export const deleteJournalAction = async (id : string) => {
     const user = await getUser();
     if (!user) throw new Error("You must be logged in to add journal");
 
-    const deleted = await db
+    await db
       .delete(moodEntries)
       .where(
         and(
@@ -106,7 +106,7 @@ export const deleteJournalAction = async (id : string) => {
 }
 
 
-export const getAllMoodAndDayLabelAction = async (id : string) => {
+export const getAllMoodAndDayLabelAction = async () => {
     try {
     const user = await getUser();
     if (!user) throw new Error("You must be logged in to add journal");

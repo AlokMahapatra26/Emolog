@@ -5,9 +5,9 @@ import React from 'react'
 
 
 const page = async () => {
-  const { data, errorMessage } = await getAllMoodAndDayLabelAction('4ef0a702-cde9-4f5a-a1c2-add1705edb72')
+  const { data } = await getAllMoodAndDayLabelAction()
 
-  console.log(data)
+  
 
   return (
     <div className="p-8">
