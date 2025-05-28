@@ -65,7 +65,7 @@ return (
       )
    }
 
-   <hr className='mt-8'/>
+  
   </>
 )
 

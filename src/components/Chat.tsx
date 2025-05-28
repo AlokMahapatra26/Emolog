@@ -92,9 +92,9 @@ type Props = {
 
   return (
 
-    <Dialog open={open} onOpenChange={handleOnOpenChange}>
+    <Dialog open={open} onOpenChange={handleOnOpenChange} >
       <DialogTrigger asChild>
-        <Button variant="default">Chat with our AI therapist</Button>
+        <Button variant="default" className="cursor-pointer">Chat with our AI therapist</Button>
       </DialogTrigger>
       <DialogContent
         className="custom-scrollbar flex h-[85vh] max-w-4xl flex-col overflow-y-auto"

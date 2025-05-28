@@ -150,24 +150,12 @@ const NavLinks = ({ isMobile }: { isMobile: boolean }) => {
     <ModeToggle />
   </div>
 </>
-
-    
-
-
-     
-     
-
-
-  
-        
-
-
       </div>
     );
   };
 
 const MobileMenu = ({ user }: Props) => (
-  <div className="flex flex-col gap-3 mt-4 w-full">
+  <div className="flex flex-col gap-3 mt-4 w-full p-6">
     {user ? (
       <>
         <NavLinks isMobile={true} />

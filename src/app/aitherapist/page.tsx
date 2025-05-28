@@ -6,7 +6,7 @@ const AItherapist = async () => {
 
   return (
    
-      <div className="bg-background rounded-2xl shadow-xl p-8 max-w-md w-full text-center space-y-6 mx-auto">
+      <div className="bg-background rounded-2xl border p-8 max-w-md w-full text-center space-y-6 mx-auto">
         
 
         <h1 className="text-2xl font-semibold text-foreground">Chat with a Therapist</h1>
@@ -15,7 +15,7 @@ const AItherapist = async () => {
           This is an AI-powered therapist experience designed to listen, reflect, and support.
         </p>
 
-        <Chat user={user} />
+        <Chat user={user}  />
 
         
 
