@@ -43,7 +43,7 @@ const Delete = ({journalId} : DeleteProps) => {
 
   return (
     
-    <Button   className="cursor-pointer" disabled={loading} variant="destructive" onClick={handleDelete}>
+    <Button   className="cursor-pointer transition-transform duration-300 hover:scale-110 hover:rotate-3" disabled={loading} variant="destructive" onClick={handleDelete}>
         {loading ? <Loader2 className='animate-spin'/> : <Trash2 className=''/>}
     </Button>
    

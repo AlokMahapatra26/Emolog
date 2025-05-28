@@ -49,7 +49,7 @@ const Journal = async ({ params }: Props) => {
         </p>
       </div>
 
-      <div>
+      <div >
         {journal.id && <Delete journalId={journal.id} />}
       </div>
     </div>
