@@ -15,6 +15,10 @@ const AItherapist = async () => {
           This is an AI-powered therapist experience designed to listen, reflect, and support.
         </p>
 
+        <p className=" text-sm border  p-2 rounded">
+         She has access to all your journals, so you could say she knows you pretty well. Chat with Tara and relax your mind
+        </p>
+
         <Chat user={user}  />
 
         

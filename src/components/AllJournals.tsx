@@ -52,7 +52,7 @@ const AllJournals = async () => {
 
       return (
         <Link href={`/journal/${journal.id}`} key={journal.id}>
-          <Card className="h-48 w-full border hover:shadow-md transition-shadow duration-200 rounded-xl flex flex-col justify-between">
+          <Card className="h-48 w-full border hover:shadow-md transition-shadow duration-200 rounded-xl flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:rotate-1">
             <CardContent className="p-4 space-y-2">
               <div className="flex items-center justify-between">
                 <Badge className={`text-xs ${moodColor}`}>
