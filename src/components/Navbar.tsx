@@ -1,50 +1,29 @@
 "use client";
 
+import { useState } from "react"; // Add this
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/DarkModeToggle";
 import { Home, User2, Brain, ChartArea, Menu, ArrowRightFromLine } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { usePathname } from "next/navigation";
-
-
-// const links = [
-//   { href: "/", label: "Home", icon: Home },
-//   { href: "/user", label: "Profile", icon: User2 },
-//   { href: "/aitherapist", label: "AI Therapist", icon: Brain },
-//   { href: "/chart", label: "Your Data", icon: ChartArea },
-// ];
-
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export const Navbar = ({ user }) => {
+  const [open, setOpen] = useState(false); // 🔹 Sheet open state
+
   return (
     <header className="w-full bg-popover text-popover-foreground border-b shadow-sm">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
-      <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
-  {/* Emotion-themed SVG */}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="w-6 h-6 text-primary"
-  >
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10
-             10-4.48 10-10S17.52 2 12 2zm0 18c-4.41
-             0-8-3.59-8-8s3.59-8 8-8 8 3.59 8
-             8-3.59 8-8 8zm4-10c-.55 0-1 .45-1
-             1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-8
-             0c-.55 0-1 .45-1 1s.45 1 1 1
-             1-.45 1-1-.45-1-1-1zm4 6c2.33
-             0 4.31-1.46 5.11-3.5H6.89C7.69
-             14.54 9.67 16 12 16z" />
-  </svg>
-  EMOLOG
-</Link>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+          
+          EMOLOG
+        </Link>
 
-
+        {/* Mobile Sheet */}
         <div className="md:hidden">
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="w-6 h-6" />
@@ -56,25 +35,22 @@ export const Navbar = ({ user }) => {
                   <span>Navigation Menu</span>
                 </VisuallyHidden>
               </SheetTitle>
-              <MobileMenu user={user} />
+              <MobileMenu user={user} closeSheet={() => setOpen(false)} /> {/* Pass closeSheet */}
             </SheetContent>
           </Sheet>
         </div>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-2">
           {user ? (
             <>
-              <NavLinks isMobile={false} />
+              <NavLinks isMobile={false} closeSheet={undefined} />
               <ModeToggle />
             </>
           ) : (
             <>
-              <Button asChild>
-                <Link href="/signup">Signup</Link>
-              </Button>
-              <Button asChild variant="outline">
-                <Link href="/login">Login</Link>
-              </Button>
+              <Button asChild><Link href="/signup">Signup</Link></Button>
+              <Button asChild variant="outline"><Link href="/login">Login</Link></Button>
             </>
           )}
         </nav>
@@ -83,87 +59,65 @@ export const Navbar = ({ user }) => {
   );
 };
 
-const NavLinks = ({ isMobile }: { isMobile: boolean }) => {
-    const pathname = usePathname();
-  
-    return (
-      <div className={`flex ${isMobile ? "flex-col w-full gap-2 p-6" : "flex-wrap items-center gap-2"}`}>
-        <Button
-          variant={pathname === "/" ? "default" : "outline"}
-          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
-          asChild
-        >
-          <Link href="/">
-            <Home className="w-4 h-4" /> <span>Home</span>
-          </Link>
-        </Button>
-  
-        <Button
-          variant={pathname === "/user" ? "default" : "outline"}
-          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
-          asChild
-        >
-          <Link href="/user">
-            <User2 className="w-4 h-4" /> <span>Profile</span>
-          </Link>
-        </Button>
-  
-        <Button
-          variant={pathname === "/aitherapist" ? "default" : "outline"}
-          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
-          asChild
-        >
-          <Link href="/aitherapist">
-            <Brain className="w-4 h-4" /> <span>AI Therapist</span>
-          </Link>
-        </Button>
 
+const NavLinks = ({ isMobile, closeSheet }) => {
+  const pathname = usePathname();
 
-        <Button
-          variant={pathname === "/chart" ? "default" : "outline"}
-          className={` flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
-          asChild
-        >
-          <Link href="/chart">
-            <ChartArea className="w-4 h-4" /> <span>Day Graph</span>
-          </Link>
-        </Button>
-
-          <form action="/api/download-journal" method="post">
-      <Button
-        type="submit"
-        variant={"outline"}
-        className={`flex items-center cursor-pointer gap-1 ${isMobile ? "w-full justify-start" : ""}`}
-      >
-        <ArrowRightFromLine className="w-4 h-4" />
-        <span>Export Data</span>
-      </Button>
-    </form>
-
-     <>
-  <div className="block lg:hidden  ">
-    <ModeToggle />
-  </div>
-</>
-      </div>
-    );
+  const handleClick = () => {
+    if (isMobile && closeSheet) closeSheet();
   };
 
-const MobileMenu = ({ user }) => (
-  <div className="flex flex-col gap-3 mt-4 w-full p-6">
-    {user ? (
-      <>
-        <NavLinks isMobile={true} />
-        {/* <div className="w-full p-6">
+  return (
+    <div className={`flex ${isMobile ? "flex-col w-full gap-2 p-6" : "flex-wrap items-center gap-2"}`}>
+      {[
+        { href: "/", label: "Home", icon: <Home className="w-4 h-4" /> },
+        { href: "/user", label: "Profile", icon: <User2 className="w-4 h-4" /> },
+        { href: "/aitherapist", label: "AI Therapist", icon: <Brain className="w-4 h-4" /> },
+        { href: "/chart", label: "Day Graph", icon: <ChartArea className="w-4 h-4" /> },
+      ].map(({ href, label, icon }) => (
+        <Button
+          key={href}
+          variant={pathname === href ? "default" : "outline"}
+          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
+          asChild
+          onClick={handleClick}
+        >
+          <Link href={href}>
+            {icon} <span>{label}</span>
+          </Link>
+        </Button>
+      ))}
+
+      <form action="/api/download-journal" method="post" onSubmit={handleClick}>
+        <Button
+          type="submit"
+          variant="outline"
+          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
+        >
+          <ArrowRightFromLine className="w-4 h-4" />
+          <span>Export Data</span>
+        </Button>
+      </form>
+
+      {isMobile && (
+        <div className="block lg:hidden">
           <ModeToggle />
-        </div> */}
-      </>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const MobileMenu = ({ user, closeSheet }) => (
+  <div className="flex flex-col gap-3 mt-4 w-full">
+    {user ? (
+      <NavLinks isMobile={true} closeSheet={closeSheet} />
     ) : (
       <>
-        <Button asChild className="w-full">
+        <Button asChild className="w-full" onClick={closeSheet}>
           <Link href="/signup">Signup</Link>
         </Button>
-        <Button asChild variant="outline" className="w-full">
+        <Button asChild variant="outline" className="w-full" onClick={closeSheet}>
           <Link href="/login">Login</Link>
         </Button>
       </>

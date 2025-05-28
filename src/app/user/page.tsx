@@ -6,7 +6,7 @@ export default async function User() {
   const user = await getUser();
 
   return (
-    <div className="p-6 max-w-xl mx-auto rounded-2xl shadow-md bg-white dark:bg-zinc-900">
+    <div className="p-6 max-w-xl mx-auto rounded-2xl border bg-popover">
       <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">User Profile</h2>
       
       <div className="space-y-2">

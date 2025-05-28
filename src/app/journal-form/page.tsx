@@ -71,6 +71,7 @@ export default function JournalForm() {
               name="thoughts"
               placeholder="Type here..."
               disabled={isPending}
+              maxLength={400}
               required
             />
 

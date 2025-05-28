@@ -142,9 +142,9 @@ type Props = {
             value={questionText}
             onChange={(e) => setQuestionText(e.target.value)}
           />
-          <Button className="ml-auto size-8 rounded-full">
+          {/* <Button className="ml-auto size-8 rounded-full">
             <ArrowUpIcon className="text-background" />
-          </Button>
+          </Button> */}
         </div>
       </DialogContent>
     </Dialog>

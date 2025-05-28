@@ -102,98 +102,96 @@ const cData = baseChartData.map(item => ({
 }));
 
 
-  return (
-   <div className="w-full px-4 py-6 flex flex-col items-center overflow-x-hidden">
-      {/* Graphs Section */}
-      <div className="w-full max-w-[1400px] flex flex-col lg:flex-row gap-8">
-        {/* Mood Level Chart */}
-        <Card className="w-full lg:w-1/2">
-          <CardHeader>
-            <CardTitle className="text-center lg:text-left text-lg">
-              Mood Level per Day
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="h-[400px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={cData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" interval={0} tick={{ fontSize: 12 }} />
-                <YAxis domain={[0, 230]} />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="mood"
-                  stroke="#8884d8"
-                  name="Mood Level"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+return (
+  <div className="w-full px-4 py-6 flex flex-col items-center overflow-x-hidden">
+    {/* Graphs Section */}
+    <div className="w-full max-w-7xl flex flex-col lg:flex-row gap-6">
+      {/* Mood Level Chart */}
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-center text-base sm:text-lg">
+            Mood Level per Day
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="h-[300px] sm:h-[400px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={cData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" interval={0} tick={{ fontSize: 10 }} />
+              <YAxis domain={[0, 230]} />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="mood"
+                stroke="#8884d8"
+                name="Mood Level"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
 
-        {/* Day Quality Chart */}
-        <Card className="w-full lg:w-1/2">
-          <CardHeader>
-            <CardTitle className="text-center lg:text-left text-lg">
-              Day Quality per Day
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="h-[400px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={cData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" interval={0} tick={{ fontSize: 12 }} />
-                <YAxis domain={[0, 60]} />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="day"
-                  stroke="#82ca9d"
-                  name="Day Rating"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Mood Logs Scrollable Section */}
-      <div className="w-full max-w-[700px] mt-12 px-4">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-center text-lg">Mood Logs</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ScrollArea className="h-[400px] w-full pr-4">
-              <div className="space-y-4">
-                {moodData.map((data, index) => (
-                  <div
-                    key={index}
-                    className="bg-muted p-4 rounded-lg border"
-                  >
-                    <p className="text-sm text-muted-foreground mb-1">
-                      {new Date(data.createdAt).toLocaleString()}
-                    </p>
-                    <p className="text-base font-medium text-blue-600">
-                      Mood: <span className="text-foreground font-normal">{data.moodLabel}</span>
-                    </p>
-                    <p className="text-base font-medium text-green-600">
-                      Day: <span className="text-foreground font-normal">{data.dayLabel}</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </ScrollArea>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Day Quality Chart */}
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-center text-base sm:text-lg">
+            Day Quality per Day
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="h-[300px] sm:h-[400px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={cData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" interval={0} tick={{ fontSize: 10 }} />
+              <YAxis domain={[0, 60]} />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="day"
+                stroke="#82ca9d"
+                name="Day Rating"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
     </div>
 
+    {/* Mood Logs Scrollable Section */}
+    <div className="w-full max-w-2xl mt-10 px-2 sm:px-4">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-center text-base sm:text-lg">Mood Logs</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ScrollArea className="h-[350px] sm:h-[400px] w-full pr-2 sm:pr-4">
+            <div className="space-y-4">
+              {moodData.map((data, index) => (
+                <div
+                  key={index}
+                  className="bg-muted p-3 sm:p-4 rounded-lg border"
+                >
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-1">
+                    {new Date(data.createdAt).toLocaleString()}
+                  </p>
+                  <p className="text-sm sm:text-base font-medium text-blue-600">
+                    Mood: <span className="text-foreground font-normal">{data.moodLabel}</span>
+                  </p>
+                  <p className="text-sm sm:text-base font-medium text-green-600">
+                    Day: <span className="text-foreground font-normal">{data.dayLabel}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+);
 
-
-  );
 };
 
 export default ChartPage;
