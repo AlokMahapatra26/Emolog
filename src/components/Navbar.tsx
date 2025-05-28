@@ -1,24 +1,23 @@
-// components/Navbar.tsx (Client Component)
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/DarkModeToggle";
-import { Home, User2, Brain, ChartArea, Menu, Database, Download, ArrowRightFromLine } from "lucide-react";
+import { Home, User2, Brain, ChartArea, Menu, ArrowRightFromLine } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { usePathname } from "next/navigation";
 
 
-const links = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/user", label: "Profile", icon: User2 },
-  { href: "/aitherapist", label: "AI Therapist", icon: Brain },
-  { href: "/chart", label: "Your Data", icon: ChartArea },
-];
+// const links = [
+//   { href: "/", label: "Home", icon: Home },
+//   { href: "/user", label: "Profile", icon: User2 },
+//   { href: "/aitherapist", label: "AI Therapist", icon: Brain },
+//   { href: "/chart", label: "Your Data", icon: ChartArea },
+// ];
 
 interface Props {
+  //@ts-ignore
   user: any; // type according to your auth setup
 }
 

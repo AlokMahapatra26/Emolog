@@ -6,7 +6,6 @@ import { moodEntries } from "@/db/schema"
 import { eq , and} from "drizzle-orm"
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs" ;
 import openai from "@/openai/index"
-
 export const addJournalAction = async (thoughts : string, mood : string, day : string) => {
     try {
     const user = await getUser();
@@ -107,7 +106,7 @@ export const deleteJournalAction = async (id : string) => {
 
 
 export const getAllMoodAndDayLabelAction = async () => {
-    try {
+    try { 
     const user = await getUser();
     if (!user) throw new Error("You must be logged in to add journal");
 
@@ -119,10 +118,6 @@ export const getAllMoodAndDayLabelAction = async () => {
   })
   .from(moodEntries)
   .where(eq(moodEntries.userId, user.id));
-
-
-       
-
     return {
       data: moodAndDay || null,
       errorMessage: null

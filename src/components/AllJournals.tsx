@@ -4,8 +4,9 @@ import { getAllJournalAction } from "@/actions/journal"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { format } from "date-fns"
-import {  Smile, Text , Trash2 } from "lucide-react"
+import {  Smile, Text } from "lucide-react"
 import Link from "next/link"
+
 
 
 
@@ -19,6 +20,11 @@ const moodColorMap: Record<string, string> = {
   neutral: "bg-gray-100 text-gray-800",
 }
 
+
+
+   
+
+
 const AllJournals = async () => {
   const {journal , errorMessage} = await getAllJournalAction()
 
@@ -31,12 +37,6 @@ const AllJournals = async () => {
   }
 
 
-  
-
-  
-
-  console.log(journal)
-
   return (
    
     <div className="max-w-3xl mx-auto p-4">
@@ -44,7 +44,8 @@ const AllJournals = async () => {
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
   {[...(journal ?? [])].reverse().length > 0 ? (
-    [...(journal ?? [])].reverse().map((journal: any) => {
+    //@ts-ignore
+    [...(journal ?? [])].reverse().map((journal:any) => {
       const mood = journal.moodLabel?.toLowerCase();
       const moodColor = moodColorMap[mood] || "bg-gray-100 text-gray-800";
       const date = new Date(journal.createdAt);

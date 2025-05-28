@@ -37,7 +37,9 @@ export async function downloadJournalHTML() {
     <body>
       <h1>My Journal Entries</h1>
       ${Array.isArray(journal) && journal.length > 0
-  ? journal.map((entry: any) => `
+  ? 
+  //@ts-ignore
+  journal.map((entry: any) => `
     <div class="entry">
       
       <p class="date">${entry.createdAt}</p>
@@ -55,7 +57,7 @@ export async function downloadJournalHTML() {
   return new Response(htmlContent, {
     headers: {
       'Content-Type': 'text/html',
-      'Content-Disposition': 'attachment; filename="journal.html"',
+      'Content-Disposition': 'attachment; filename="data.html"',
     },
   })
 }

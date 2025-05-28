@@ -20,7 +20,7 @@ const AItherapist = async () => {
         
 
         <p className="text-xs text-muted-foreground mt-2">
-  {"\u26A0\uFE0F"} This AI is not a substitute for real mental health care. If you're going through a serious situation, please seek help from a licensed therapist or professional.
+   This AI is not a substitute for real mental health care. If you are going through a serious situation, please seek help from a licensed therapist or professional.
 </p>
 
       </div>
