@@ -21,19 +21,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 // Chart component
 const ChartPage = ({chartData}:any) => {
 
-
-  
-// Your raw data
-// const moodData = [
-//   { moodLabel: 'tired', dayLabel: 'Not so good', createdAt: new Date('2025-05-25') }, // SUN
-//   { moodLabel: 'relaxed', dayLabel: 'Okay', createdAt: new Date('2025-05-26') },      // MON
-//   { moodLabel: 'bored', dayLabel: 'Bad', createdAt: new Date('2025-05-27') },         // TUE
-//   { moodLabel: 'excited', dayLabel: 'Great', createdAt: new Date('2025-05-28') },     // WED
-//   { moodLabel: 'tired', dayLabel: 'Not so good', createdAt: new Date('2025-05-29') }, // THU
-//   { moodLabel: 'relaxed', dayLabel: 'Okay', createdAt: new Date('2025-05-30') },      // FRI
-//   { moodLabel: 'excited', dayLabel: 'excited', createdAt: new Date('2025-05-31') },     // SAT
-// ];
-
 const moodData = chartData;
 
 

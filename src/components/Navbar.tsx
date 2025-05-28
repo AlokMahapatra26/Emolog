@@ -5,12 +5,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/DarkModeToggle";
-import { Home, User2, Brain, ChartArea, Menu } from "lucide-react";
+import { Home, User2, Brain, ChartArea, Menu, Database, Download, ArrowRightFromLine } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { usePathname } from "next/navigation";
 
-const pathname = usePathname();
 
 const links = [
   { href: "/", label: "Home", icon: Home },
@@ -105,7 +104,7 @@ const NavLinks = ({ isMobile }: { isMobile: boolean }) => {
         </Button>
   
         <Button
-          variant={pathname === "/user" ? "secondary" : "outline"}
+          variant={pathname === "/user" ? "default" : "outline"}
           className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
           asChild
         >
@@ -123,6 +122,20 @@ const NavLinks = ({ isMobile }: { isMobile: boolean }) => {
             <Brain className="w-4 h-4" /> <span>AI Therapist</span>
           </Link>
         </Button>
+
+          <form action="/api/download-journal" method="post">
+      <Button
+        type="submit"
+        variant={"outline"}
+        className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
+      >
+        <ArrowRightFromLine className="w-4 h-4" />
+        <span>Export Data</span>
+      </Button>
+    </form>
+     
+
+
   
         <Button
           variant={pathname === "/chart" ? "default" : "outline"}
@@ -130,9 +143,11 @@ const NavLinks = ({ isMobile }: { isMobile: boolean }) => {
           asChild
         >
           <Link href="/chart">
-            <ChartArea className="w-4 h-4" /> <span>Your Data</span>
+            <ChartArea className="w-4 h-4" /> <span>Day Graph</span>
           </Link>
         </Button>
+
+
       </div>
     );
   };
