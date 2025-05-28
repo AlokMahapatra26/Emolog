@@ -123,29 +123,43 @@ const NavLinks = ({ isMobile }: { isMobile: boolean }) => {
           </Link>
         </Button>
 
-          <form action="/api/download-journal" method="post">
-      <Button
-        type="submit"
-        variant={"outline"}
-        className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
-      >
-        <ArrowRightFromLine className="w-4 h-4" />
-        <span>Export Data</span>
-      </Button>
-    </form>
-     
 
-
-  
         <Button
           variant={pathname === "/chart" ? "default" : "outline"}
-          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
+          className={` flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
           asChild
         >
           <Link href="/chart">
             <ChartArea className="w-4 h-4" /> <span>Day Graph</span>
           </Link>
         </Button>
+
+          <form action="/api/download-journal" method="post">
+      <Button
+        type="submit"
+        variant={"outline"}
+        className={`flex items-center cursor-pointer gap-1 ${isMobile ? "w-full justify-start" : ""}`}
+      >
+        <ArrowRightFromLine className="w-4 h-4" />
+        <span>Export Data</span>
+      </Button>
+    </form>
+
+     <>
+  <div className="block lg:hidden  ">
+    <ModeToggle />
+  </div>
+</>
+
+    
+
+
+     
+     
+
+
+  
+        
 
 
       </div>
@@ -157,9 +171,9 @@ const MobileMenu = ({ user }: Props) => (
     {user ? (
       <>
         <NavLinks isMobile={true} />
-        <div className="w-full p-6">
+        {/* <div className="w-full p-6">
           <ModeToggle />
-        </div>
+        </div> */}
       </>
     ) : (
       <>

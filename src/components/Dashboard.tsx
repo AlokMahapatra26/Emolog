@@ -9,7 +9,10 @@ const Dashboard = () => {
     <div className='text-center mt-8'>
         
             <Link href="/journal-form">
-            <Button className='cursor-pointer'>Write<Pencil/></Button>
+           <Button className="cursor-pointer text-lg px-6 py-3 transition-transform duration-300 hover:scale-110 hover:rotate-3">
+  Write <Pencil className="ml-2" />
+</Button>
+
             </Link>
             <hr className='mt-4'/>
             <AllJournals/>
