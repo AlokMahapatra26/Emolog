@@ -160,7 +160,7 @@ export const aiTherapistAction = async (
 
 
   if (AllEntries.length === 0) {
-    return "You don't have any notes yet.";
+    return "I dont know anything about you baba! can you please write some journal so that i can have some info about you";
   }
 
   const formattedEntries = AllEntries

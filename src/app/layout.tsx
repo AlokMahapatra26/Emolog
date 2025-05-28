@@ -11,7 +11,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "SmartNotes",
+  title: "Emolog",
 };
 
 export default function RootLayout({
