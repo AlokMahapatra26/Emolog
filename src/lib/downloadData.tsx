@@ -3,23 +3,7 @@
 import { getAllJournalAction } from '@/actions/journal'
 
 export async function downloadJournalHTML() {
-  const {journal , errorMessage} = await getAllJournalAction()
-  
-    if (errorMessage) {
-      return (
-        <div className="text-center mt-20 text-red-600">
-          Failed to load journals or none found.
-        </div>
-      )
-    }
-  
-  
-    
-  
-    
-  
-    console.log(journal)
-
+  const {journal} = await getAllJournalAction()
   const htmlContent = `
     <!DOCTYPE html>
     <html lang="en">
@@ -38,8 +22,8 @@ export async function downloadJournalHTML() {
       <h1>My Journal Entries</h1>
       ${Array.isArray(journal) && journal.length > 0
   ? 
-  //@ts-ignore
-  journal.map((entry: any) => `
+  
+  journal.map((entry) => `
     <div class="entry">
       
       <p class="date">${entry.createdAt}</p>

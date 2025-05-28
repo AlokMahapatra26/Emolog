@@ -44,8 +44,7 @@ const AllJournals = async () => {
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
   {[...(journal ?? [])].reverse().length > 0 ? (
-    //@ts-ignore
-    [...(journal ?? [])].reverse().map((journal:any) => {
+    [...(journal ?? [])].reverse().map((journal) => {
       const mood = journal.moodLabel?.toLowerCase();
       const moodColor = moodColorMap[mood] || "bg-gray-100 text-gray-800";
       const date = new Date(journal.createdAt);

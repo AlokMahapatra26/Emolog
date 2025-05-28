@@ -16,12 +16,8 @@ import { usePathname } from "next/navigation";
 //   { href: "/chart", label: "Your Data", icon: ChartArea },
 // ];
 
-interface Props {
-  //@ts-ignore
-  user: any; // type according to your auth setup
-}
 
-export const Navbar = ({ user }: Props) => {
+export const Navbar = ({ user }) => {
   return (
     <header className="w-full bg-popover text-popover-foreground border-b shadow-sm">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
@@ -153,7 +149,7 @@ const NavLinks = ({ isMobile }: { isMobile: boolean }) => {
     );
   };
 
-const MobileMenu = ({ user }: Props) => (
+const MobileMenu = ({ user }) => (
   <div className="flex flex-col gap-3 mt-4 w-full p-6">
     {user ? (
       <>

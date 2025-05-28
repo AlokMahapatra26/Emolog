@@ -19,7 +19,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 
 // Chart component
-const ChartPage = ({chartData}:any) => {
+const ChartPage = ({chartData}) => {
 
 const moodData = chartData;
 
@@ -168,7 +168,7 @@ const cData = baseChartData.map(item => ({
           <CardContent>
             <ScrollArea className="h-[400px] w-full pr-4">
               <div className="space-y-4">
-                {moodData.map((data: any, index: number) => (
+                {moodData.map((data, index) => (
                   <div
                     key={index}
                     className="bg-muted p-4 rounded-lg border"
