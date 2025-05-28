@@ -14,7 +14,6 @@ import {
 import { Fragment, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Textarea } from "./ui/textarea";
-import { ArrowUpIcon } from "lucide-react";
 import { aiTherapistAction } from "@/actions/journal";
 import "@/styles/ai-response.css";
 
