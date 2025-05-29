@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRightFromLine, Copy } from 'lucide-react'
-import { cn } from '@/lib/utils'  // optional: if you use `cn()` helper
+
 
 const Page = () => {
   const [copied, setCopied] = useState(false)
