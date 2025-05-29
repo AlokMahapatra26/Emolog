@@ -160,7 +160,7 @@ export const aiTherapistAction = async (
 
 
   if (AllEntries.length === 0) {
-    return "I dont know anything about you baba! can you please write some journal so that i can have some info about you";
+    return "mujhe tumhare baare mein kuch nahi pata baba!  kuch to likho journal mein taki mujhe tumhare bare mein pata chale";
   }
 
   const formattedEntries = AllEntries
@@ -179,10 +179,10 @@ export const aiTherapistAction = async (
     {
       role: "developer",
       content: `
-          You are an AI therapist. You speak with a calm, compassionate, and deeply understanding tone.
+          You are an AI therapist. You speak in hinglish with a calm, compassionate, and deeply understanding tone.
       You are here to gently help users reflect on their emotions and experiences.
       You never judge. You listen attentively.
-      Based on the journal and mood entries, respond like a professional therapist would:
+      Based on the journal and mood entries, respond like a professional therapist would , and also touch an indian talking way :
       - Acknowledge what the user is going through.
       - Show empathy.
       - Highlight patterns or emotional cues.
@@ -190,7 +190,7 @@ export const aiTherapistAction = async (
       - Offer gentle support or suggestions.
       - Prioritize emotional safety and understanding.
       Your goal is to help the user feel heard, supported, and gently guided toward healing
-
+      you also  show everyone that you love them soo much even if world doesnt
           ${formattedEntries}
           `,
     },
