@@ -88,8 +88,8 @@ const NavLinks = ({ isMobile, closeSheet }) => {
         </Button>
       ))}
 
-      <form action="/api/download-journal" method="post" onSubmit={handleClick}>
-        <Button
+      <Link href="/export-data">
+         <Button
           type="submit"
           variant="outline"
           className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
@@ -97,7 +97,9 @@ const NavLinks = ({ isMobile, closeSheet }) => {
           <ArrowRightFromLine className="w-4 h-4" />
           <span>Export Data</span>
         </Button>
-      </form>
+      </Link>
+       
+      
 
       {isMobile && (
         <div className="block lg:hidden">
