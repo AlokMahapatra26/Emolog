@@ -1,4 +1,3 @@
-
 "use client";
 
 import { User } from "@supabase/supabase-js";
@@ -21,15 +20,37 @@ type Props = {
   user: User | null;
 };
 
- function Chat({ user }: Props) {
-  const router = useRouter();
+const personas = ["tara", "emma", "raghu", "alex"] as const;
 
+function getPersonaName(persona: string) {
+  if (persona === "tara") return "Tara";
+  if (persona === "emma") return "Emma";
+  if (persona === "raghu") return "Raghu";
+  if (persona === "alex") return "Alex";
+  return "";
+}
+
+function getPersonaDescription(persona: string) {
+  if (persona === "tara") return "Tara is from Delhi , she is sweet as sugar and she will help you understand your emotions ❤️";
+  if (persona === "emma") return "Emma is your calm friend from London 🌸, always ready to lend a compassionate ear.";
+  if (persona === "raghu") return "Raghu is a Therapist from mumbai , yeah thats it we don't know much about him hehe";
+  if (persona === "alex") return "Alex is a thoughtful mentor from New York 🌍 who helps you grow with empathy and logic.";
+  return "";
+}
+
+function Chat({ user }: Props) {
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
   const [open, setOpen] = useState(false);
+  const [persona, setPersona] = useState<"tara" | "emma" | "raghu" | "alex">("tara");
+
   const [questionText, setQuestionText] = useState("");
   const [questions, setQuestions] = useState<string[]>([]);
   const [responses, setResponses] = useState<string[]>([]);
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleOnOpenChange = (isOpen: boolean) => {
     if (!user) {
@@ -39,13 +60,11 @@ type Props = {
         setQuestionText("");
         setQuestions([]);
         setResponses([]);
+        setPersona("tara");
       }
       setOpen(isOpen);
     }
   };
-
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleInput = () => {
     const textarea = textareaRef.current;
@@ -68,9 +87,8 @@ type Props = {
     setTimeout(scrollToBottom, 100);
 
     startTransition(async () => {
-      const response = await aiTherapistAction(newQuestions, responses);
+      const response = await aiTherapistAction(newQuestions, responses, persona);
       setResponses((prev) => [...prev, response]);
-
       setTimeout(scrollToBottom, 100);
     });
   };
@@ -90,21 +108,39 @@ type Props = {
   };
 
   return (
-
-    <Dialog open={open} onOpenChange={handleOnOpenChange} >
+    <Dialog open={open} onOpenChange={handleOnOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="default" className="cursor-pointer transition-transform duration-300 hover:scale-110 hover:rotate-3">Chat with our AI therapist</Button>
+        <Button variant="default" className="cursor-pointer transition-transform duration-300 hover:scale-110 hover:rotate-3">
+          Chat with our AI therapist
+        </Button>
       </DialogTrigger>
-      <DialogContent
-        className="custom-scrollbar flex h-[85vh] max-w-4xl flex-col overflow-y-auto"
-        ref={contentRef}
-      >
+      <DialogContent className="custom-scrollbar flex h-[85vh] max-w-4xl flex-col overflow-y-auto" ref={contentRef}>
         <DialogHeader>
-          <DialogTitle>Tara</DialogTitle>
-          <DialogDescription className=" text-xs border p-2 rounded opacity-50">
-            Tara know everything you have wrote in your journals and she will help you to navigate and understand your emotions
+          <DialogTitle>{getPersonaName(persona)}</DialogTitle>
+          <DialogDescription className="text-xs border p-2 rounded opacity-50">
+            {getPersonaDescription(persona)}
           </DialogDescription>
         </DialogHeader>
+
+        <div className="flex gap-2 my-2">
+          {personas.map((p) => (
+  <Button
+    key={p}
+    variant={p === persona ? "default" : "outline"}
+    size="sm"
+    onClick={() => {
+      setPersona(p);
+      setQuestions([]);
+      setResponses([]);
+      setQuestionText("");
+    }}
+    className="capitalize cursor-pointer"
+  >
+    {getPersonaName(p)}
+  </Button>
+))}
+
+        </div>
 
         <div className="mt-4 flex flex-col gap-8">
           {questions.map((question, index) => (
@@ -141,9 +177,6 @@ type Props = {
             value={questionText}
             onChange={(e) => setQuestionText(e.target.value)}
           />
-          {/* <Button className="ml-auto size-8 rounded-full">
-            <ArrowUpIcon className="text-background" />
-          </Button> */}
         </div>
       </DialogContent>
     </Dialog>

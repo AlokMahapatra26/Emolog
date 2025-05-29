@@ -78,7 +78,7 @@ const NavLinks = ({ isMobile, closeSheet }) => {
         <Button
           key={href}
           variant={pathname === href ? "default" : "outline"}
-          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
+          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start p-6" : ""}`}
           asChild
           onClick={handleClick}
         >
@@ -92,7 +92,7 @@ const NavLinks = ({ isMobile, closeSheet }) => {
          <Button
           type="submit"
           variant="outline"
-          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start" : ""}`}
+          className={`flex items-center gap-1 ${isMobile ? "w-full justify-start p-6" : ""}`}
         >
           <ArrowRightFromLine className="w-4 h-4" />
           <span>Export Data</span>

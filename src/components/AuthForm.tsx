@@ -59,23 +59,23 @@ function AuthForm({type}:Props) {
         <CardContent className="grid w-full items-center gap-4">
 
              { !isLoginForm ? <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="email">Name</Label>
-            <Input id="name" name="name" placeholder="Enter your name" type="text" required disabled={isPending}/>
+                {/* <Label htmlFor="email">Name</Label> */}
+            <Input id="name" name="name" placeholder="Enter your name" type="text" required disabled={isPending} className="p-6"/>
             </div> : ""}
 
             <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="email">Email</Label>
-            <Input id="email" name="email" placeholder="Enter your email" type="email" required disabled={isPending}/>
+                {/* <Label htmlFor="email">Email</Label> */}
+            <Input id="email" name="email" placeholder="Enter your email" type="email" required disabled={isPending} className="p-6"/>
             </div>
              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password">Password</Label>
-            <Input id="password" name="password" placeholder="Enter your password" type="password" required disabled={isPending}/>
+                {/* <Label htmlFor="password">Password</Label> */}
+            <Input id="password" name="password" placeholder="Enter your password" type="password" required disabled={isPending} className="p-6"/>
             </div>
             
         </CardContent>
         <br />
         <CardFooter className="mt-4 flex flex-col gap-6">
-            <Button className="w-full">{isPending ? ( <Loader2 className="animate-spin"/> ) : isLoginForm ? "Login" : "Sign Up"}</Button>
+            <Button className="w-full p-6">{isPending ? ( <Loader2 className="animate-spin"/> ) : isLoginForm ? "Login" : "Sign Up"}</Button>
             <p className="text-xs">
                 {isLoginForm ? "Dont have an account yet ? " : "Already have an account ? "}{"  "}
                 <Link className={`underline text-blue-500 ${isPending ? " pointer-event-none opacity-50" : ""}`} href={isLoginForm ? "/signup" : "/login"}>{isLoginForm ? "signup" : "login"}</Link>
