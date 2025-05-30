@@ -152,7 +152,7 @@ export const aiTherapistAction = async (
     .where(eq(moodEntries.userId, user.id));
 
   if (AllEntries.length === 0) {
-    return "i dont know anything about you baba";
+    return "please write some journal so that i can have some info about you , cause right now i dont have any info about you apart from your name";
   }
 
   const formattedEntries = AllEntries
