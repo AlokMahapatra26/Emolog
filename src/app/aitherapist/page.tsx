@@ -1,6 +1,8 @@
 import React from "react";
 import Chat from "@/components/Chat";
 import { getUser } from "@/auth/server";
+import Image from "next/image";
+
 const AItherapist = async () => {
   const user = await getUser();
 
@@ -15,8 +17,26 @@ const AItherapist = async () => {
           This is an AI-powered therapist experience designed to listen, reflect, and support.
         </p>
 
+      <div className="flex flex-wrap gap-6 p-4 justify-center">
+  {["tara", "emma", "raghu", "alex"].map((name) => (
+    <div key={name} className="flex flex-col items-center space-y-2">
+      <div className="w-16 h-16 relative">
+        <Image
+          src={`/${name}.png`}
+          alt={name}
+          fill
+          className="rounded-full object-cover"
+        />
+      </div>
+      <span className="text-sm capitalize text-gray-700">{name}</span>
+    </div>
+  ))}
+</div>
+
+
+
         <p className=" text-sm border  p-2 rounded">
-         She has access to all your journals, so you could say she knows you pretty well. Chat with Tara and relax your mind
+         Therapists havee access to all your journals, so you could say she knows you pretty well. Chat with Tara and relax your mind
         </p>
 
         <Chat user={user}  />

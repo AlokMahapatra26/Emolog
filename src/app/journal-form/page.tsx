@@ -109,8 +109,8 @@ export default function JournalForm() {
               </Select>
             </div>
 
-            <div className="flex flex-col space-y-1.5">
-              <Button variant="default" className="cursor-pointer" disabled={isPending}>
+            <div className="flex flex-col space-y-1.5 ">
+              <Button variant="default" className="cursor-pointer p-6" disabled={isPending} >
                 {isPending ? 'Saving...' : 'Save'}
               </Button>
             </div>

@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { Textarea } from "./ui/textarea";
 import { aiTherapistAction } from "@/actions/journal";
 import "@/styles/ai-response.css";
+import Image from "next/image";
 
 type Props = {
   user: User | null;
@@ -110,7 +111,7 @@ function Chat({ user }: Props) {
   return (
     <Dialog open={open} onOpenChange={handleOnOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="default" className="cursor-pointer transition-transform duration-300 hover:scale-110 hover:rotate-3">
+        <Button variant="default" className="cursor-pointer transition-transform duration-300 hover:scale-110 hover:rotate-3 p-6 text-md">
           Chat with our AI therapist
         </Button>
       </DialogTrigger>
@@ -122,25 +123,33 @@ function Chat({ user }: Props) {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex gap-2 my-2">
-          {personas.map((p) => (
-  <Button
-    key={p}
-    variant={p === persona ? "default" : "outline"}
-    size="sm"
-    onClick={() => {
-      setPersona(p);
-      setQuestions([]);
-      setResponses([]);
-      setQuestionText("");
-    }}
-    className="capitalize cursor-pointer"
-  >
-    {getPersonaName(p)}
-  </Button>
-))}
+       <div className="flex gap-2 my-2 flex-wrap">
+  {personas.map((p) => (
+    <Button
+      key={p}
+      variant={p === persona ? "default" : "outline"}
+      size="sm"
+      onClick={() => {
+        setPersona(p);
+        setQuestions([]);
+        setResponses([]);
+        setQuestionText("");
+      }}
+      className="flex flex-col items-center justify-center w-20 h-24 p-2 gap-1 capitalize"
+    >
+      <div className="w-10 h-10 relative">
+        <Image
+          src={`/${p}.png`}
+          alt={p}
+          fill
+          className="rounded-full object-cover"
+        />
+      </div>
+      <span className="text-xs text-center">{getPersonaName(p)}</span>
+    </Button>
+  ))}
+</div>
 
-        </div>
 
         <div className="mt-4 flex flex-col gap-8">
           {questions.map((question, index) => (
