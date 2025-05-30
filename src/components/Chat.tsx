@@ -33,7 +33,7 @@ function getPersonaName(persona: string) {
 function getPersonaDescription(persona: string) {
   if (persona === "tara") return "Tara is from Delhi , she is sweet as sugar and she will help you understand your emotions ❤️";
   if (persona === "emma") return "Emma is your calm friend from London 🌸, always ready to lend a compassionate ear.";
-  if (persona === "raghu") return "Raghu is a Therapist from mumbai , yeah thats it we don't know much about him hehe";
+  if (persona === "raghu") return "Raghu is a Therapist from mumbai , yeah thats it we don't know much about him , we even dont if he is therapist or not (zabardasti ghus aayaa hai yahan)";
   if (persona === "alex") return "Alex is a thoughtful mentor from New York 🌍 who helps you grow with empathy and logic.";
   return "";
 }
