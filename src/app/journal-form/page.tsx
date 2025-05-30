@@ -15,7 +15,6 @@ import {
 } from '@/components/ui/select';
 import DateAndTime from '@/components/DateAndTime';
 import { addJournalAction } from '@/actions/journal';
-import { Lock } from 'lucide-react';
 
 export default function JournalForm() {
   const router = useRouter();
@@ -51,10 +50,7 @@ export default function JournalForm() {
      
       
       <DateAndTime />
-       <p className="flex items-center gap-2 text-sm text-muted-foreground italic text-center mx-auto border p-2 rounded my-4">
-  <Lock className="h-4 w-4 text-primary" />
-  Your journals are end-to-end encrypted — no one can read them except our AI therapist.
-</p>
+       
 
       <div className="w-full flex justify-center">
 

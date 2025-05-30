@@ -18,6 +18,14 @@ export const moodEntries = pgTable('mood_entries', {
   createdAt: timestamp('created_at').defaultNow()
 });
 
+export const chatLogs = pgTable("chat_logs", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: text("user_id").notNull(),
+  question: text("question").notNull(),
+  response: text("response").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const moodEntryRelations = relations(moodEntries, ({ one }) => ({
   user: one(users, {
     fields: [moodEntries.userId],

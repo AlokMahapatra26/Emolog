@@ -6,6 +6,8 @@ import { moodEntries } from "@/db/schema"
 import { eq , and} from "drizzle-orm"
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs" ;
 import openai from "@/openai/index"
+import { chatLogs } from "@/db/schema"
+
 export const addJournalAction = async (thoughts : string, mood : string, day : string) => {
     try {
     const user = await getUser();
@@ -248,6 +250,14 @@ export const aiTherapistAction = async (
     model: "gpt-4o-mini",
     messages,
   });
+
+  const responseContent = completion.choices[0].message.content || "A problem has occurred";
+
+  await db.insert(chatLogs).values({
+  userId: user.id,
+  question: newQuestions[newQuestions.length - 1],
+  response: responseContent,
+});
 
   return completion.choices[0].message.content || "A problem has occurred";
 };
