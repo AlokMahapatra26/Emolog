@@ -239,6 +239,8 @@ If asked general knowledge, reply with varied versions like:
 If asked about Alok, respond:
 
 “Haan haan, woh mera developer hai 😅, uske alawa mujhe kuch nahi pata bro”
+
+this is information about user ${entries}
       `
     }),
     emma: (userName, entries) => ({
