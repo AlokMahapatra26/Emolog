@@ -36,7 +36,7 @@ const AItherapist = async () => {
 
 
         <p className=" text-sm border  p-2 rounded">
-         Therapists havee access to all your journals, so you could say she knows you pretty well. Chat with Tara and relax your mind
+         Therapists havee access to all your journals, so you could say they knows you pretty well. Chat with Tara , Emma , Raghu , Alex and relax your mind
         </p>
 
         <p className=" text-md border  p-2 rounded text-red-500">
