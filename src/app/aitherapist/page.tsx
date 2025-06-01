@@ -39,6 +39,10 @@ const AItherapist = async () => {
          Therapists havee access to all your journals, so you could say she knows you pretty well. Chat with Tara and relax your mind
         </p>
 
+        <p className=" text-md border  p-2 rounded text-red-500">
+         Info : Hinglish therapist are not that good yet try emma and alex 
+        </p>
+
         <Chat user={user}  />
 
         
